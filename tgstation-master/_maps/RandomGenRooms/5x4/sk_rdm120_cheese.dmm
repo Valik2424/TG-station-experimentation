@@ -1,0 +1,166 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 8;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"b" = (
+/obj/structure/window/spawner/directional/south,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"c" = (
+/obj/structure/window/spawner/directional/east,
+/turf/open/floor/iron,
+/area/template_noop)
+"d" = (
+/obj/machinery/door/window/left/directional/west{
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/template_noop)
+"e" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"f" = (
+/obj/structure/window/spawner/directional/west,
+/turf/open/floor/iron,
+/area/template_noop)
+"g" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/template_noop)
+"h" = (
+/obj/item/food/cheese/wheel,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/template_noop)
+"i" = (
+/obj/machinery/light/directional/west,
+/obj/structure/window/spawner/directional/east,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"j" = (
+/obj/item/food/cheese/wedge,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/template_noop)
+"k" = (
+/obj/structure/window/spawner/directional/north,
+/turf/open/floor/iron,
+/area/template_noop)
+"l" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/template_noop)
+"m" = (
+/obj/machinery/light/broken/directional/east,
+/obj/structure/window/spawner/directional/west,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"n" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"o" = (
+/obj/structure/window/spawner/directional/north,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"p" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8;
+	icon_state = "tile_corner"
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4;
+	icon_state = "tile_corner"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+c
+i
+n
+"}
+(2,1,1) = {"
+b
+g
+j
+o
+"}
+(3,1,1) = {"
+d
+g
+l
+k
+"}
+(4,1,1) = {"
+b
+h
+g
+o
+"}
+(5,1,1) = {"
+e
+f
+m
+p
+"}

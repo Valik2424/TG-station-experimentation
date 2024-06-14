@@ -1,0 +1,341 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/space/basic,
+/area/space)
+"b" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/cmo,
+/turf/open/openspace/airless,
+/area/space)
+"d" = (
+/obj/effect/mapping_helpers/airlock/access/any/science/genetics,
+/turf/open/openspace/airless,
+/area/space)
+"f" = (
+/obj/effect/mapping_helpers/airlock/access/any/security/hos,
+/obj/effect/mapping_helpers/airlock/access/any/security/armory,
+/turf/open/openspace/airless,
+/area/space)
+"l" = (
+/obj/effect/mapping_helpers/airlock/access/any/security/detective,
+/turf/open/openspace/airless,
+/area/space)
+"o" = (
+/obj/effect/mapping_helpers/airlock/access/any/engineering,
+/turf/open/openspace/airless,
+/area/space)
+"u" = (
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/turf/open/openspace/airless,
+/area/space)
+"v" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/chemistry,
+/turf/open/openspace/airless,
+/area/space)
+"x" = (
+/obj/effect/mapping_helpers/airlock/access/any/science/general,
+/turf/open/openspace/airless,
+/area/space)
+"z" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/psychology,
+/turf/open/openspace/airless,
+/area/space)
+"B" = (
+/turf/open/openspace/airless,
+/area/space)
+"C" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/virology,
+/turf/open/openspace/airless,
+/area/space)
+"D" = (
+/obj/effect/mapping_helpers/airlock/access/any/science/rd,
+/turf/open/openspace/airless,
+/area/space)
+"F" = (
+/obj/effect/mapping_helpers/airlock/access/any/security/general,
+/turf/open/openspace/airless,
+/area/space)
+"K" = (
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/turf/open/openspace/airless,
+/area/space)
+"N" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/morgue,
+/turf/open/openspace/airless,
+/area/space)
+"P" = (
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
+/turf/open/space/basic,
+/area/space)
+"R" = (
+/obj/effect/mapping_helpers/airlock/access/any/engineering/ce,
+/turf/open/openspace/airless,
+/area/space)
+"T" = (
+/obj/effect/mapping_helpers/airlock/access/any/science/robotics,
+/turf/open/openspace/airless,
+/area/space)
+"U" = (
+/obj/effect/mapping_helpers/airlock/access/any/security/armory,
+/turf/open/openspace/airless,
+/area/space)
+"W" = (
+/obj/effect/mapping_helpers/airlock/access/any/medical/chemistry,
+/obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
+/turf/open/openspace/airless,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+R
+b
+D
+f
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+o
+W
+x
+F
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+u
+v
+d
+l
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+P
+N
+T
+K
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+z
+B
+U
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+C
+B
+B
+B
+B
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

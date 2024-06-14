@@ -1,0 +1,8 @@
+/turf/open/floor/plasteel/monofloor : /turf/open/floor/iron/large{@OLD}
+/turf/open/floor/plasteel/monofloor/dark : /turf/open/floor/iron/dark/smooth_large{@OLD}
+/obj/item/storage/firstaid/regular : /obj/item/storage/medkit{@OLD}
+/obj/machinery/modular_computer/console/preset/engineering : /obj/machinery/modular_computer/preset/engineering{@OLD}
+/obj/machinery/computer/shuttle_flight/mining : /obj/machinery/computer/shuttle/mining{@OLD}
+/obj/machinery/computer/shuttle_flight/labor : /obj/machinery/computer/shuttle/labor{@OLD}
+/mob/living/simple_animal/pet/fox/renault : /mob/living/basic/pet/fox/renault{@OLD}
+/obj/item/reagent_containers/food/drinks/flask/gold : /obj/item/reagent_containers/cup/glass/flask/gold{@OLD}

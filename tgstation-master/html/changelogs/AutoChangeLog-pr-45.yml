@@ -1,0 +1,6 @@
+author: "IvanDog11"
+delete-after: True
+changes:
+  - rscadd: "Перевод Очков"
+  - rscadd: "Перевод Одежды техножреца"
+  - rscadd: "Перевод Инвертера полиморфного поля"

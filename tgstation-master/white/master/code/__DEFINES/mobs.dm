@@ -1,0 +1,3 @@
+// Pixel shifting
+#define PIXEL_SHIFT_MAXIMUM 8
+#define PIXEL_SHIFT_PASSABLE_THRESHOLD 4

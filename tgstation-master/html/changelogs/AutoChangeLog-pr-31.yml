@@ -1,0 +1,6 @@
+author: "Fesiks"
+delete-after: True
+changes:
+  - rscadd: "Наниты!"
+  - rscadd: "Переводы."
+  - rscadd: "пропавшие иконки скафандров"
