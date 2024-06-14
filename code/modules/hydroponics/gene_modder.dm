@@ -139,7 +139,7 @@
 				dat += "<span class='highlight'>[target.get_name()]</span> gene from <span class='highlight'>[seed]</span>?<br>"
 			if("extract")
 				dat += span_bad("The sample will be destroyed in process!")
-				// Обмеження характеристик при витягуванні
+				// Ограничение характеристик при вытягивании
 				var/stat_name = null
 				switch(target.type)
 					if("/datum/plant_gene/trait/potency")
@@ -215,18 +215,18 @@
 	if(seed)
 		var/can_insert = disk && disk.gene && disk.gene.can_add(seed)
 		var/can_extract = disk && !disk.read_only
-		// --- Відображення Core Stats ---
+		// --- Отображение Core Stats ---
 		dat += "<div class='line'><h3>Core Stats</h3></div>"
 		dat += "<div class='statusDisplay'><table>"
 		for (var/stat_name in core_stats)
 			var/stat_value = core_stats[stat_name]
 			dat += "<tr><td width='260px'>[stat_name]:</td><td>[stat_value]</td>"
-			if(can_extract) // Перевірка, чи можна витягувати гени
+			if(can_extract) // Проверка, можно ли извлекать гены
 				dat += "<td><a href='?src=[REF(src)];extract_stat=[stat_name]'>Extract</a></td></tr>"
 			else
-				dat += "<td></td></tr>" //  Додаємо пусту клітинку, якщо витягування неможливе
+				dat += "<td></td></tr>" // Добавляем пустую ячейку, если вытягивание невозможно
 		dat += "</table></div>"
-		// --- Відображення Reagent Genes ---
+		// --- Отображение Reagent Genes ---
 		dat += "<div class='line'><h3>Reagent Genes</h3></div>"
 		dat += "<div class='statusDisplay'>"
 
@@ -240,15 +240,15 @@
 			dat += "<table>"
 			for (var/datum/plant_gene/gene in seed.genes)
 				if (!istype(gene, /datum/plant_gene/reagent))
-					continue // Пропускаємо гени, які не є Reagent Genes
+					continue // Пропускаем гены, которые не являются Reagent Genes
 
 				dat += "<tr><td width='260px'>[gene.get_name()]</td><td>"
 
-				// Перевірка наявності диска та захисту від запису для Extract
+				// Проверка наличия диска и защиты от записи для Extract
 				if (disk && !disk.read_only)
 					dat += "<a href='?src=[REF(src)];gene=[REF(gene)];op=extract'>Extract</a> "
 
-				// Кнопка Remove для реагентів
+				// Кнопка Remove для реагентов
 				if (gene.mutability_flags & PLANT_GENE_REMOVABLE)
 					dat += "<a href='?src=[REF(src)];gene=[REF(gene)];op=remove'>Remove</a>"
 
@@ -274,7 +274,7 @@
 			dat += "<table>"
 			for(var/datum/plant_gene/gene in seed.genes)
 				if(!istype(gene, /datum/plant_gene/trait))
-					continue // Пропускаємо гени, які не є Trait Genes
+					continue // Пропускаем гены, которые не являются Trait Genes
 				dat += "<tr><td width='260px'>[gene.get_name()]</td><td>"
 				if(can_extract && gene.mutability_flags & PLANT_GENE_MUTATABLE)
 					dat += "<a href='?src=[REF(src)];gene=[REF(gene)];op=extract'>Extract</a>"
@@ -294,46 +294,46 @@
 	popup.open()
 //
 /obj/machinery/plantgenes/Topic(href, list/href_list)
-	if(..()) // Обробка стандартних дій Topic
+	if(..()) // Обработка стандартных действий Topic
 		return
 
-	usr.set_machine(src) // Запам'ятовуємо, що гравець використовує цей пристрій
+	usr.set_machine(src) // Запоминаем, что игрок использует это устройство
 
-	// --- Обробка вивантаження насіння ---
+	// --- Обработка выгрузки семян ---
 	if(href_list["eject_seed"] && !operation)
 		var/obj/item/I = usr.get_active_held_item()
-		if(istype(I, /obj/item/seeds)) // Якщо гравець тримає насіння, вставляємо його
+		if(istype(I, /obj/item/seeds)) // Если игрок держит семена, вставляем их
 			if(!usr.transferItemToLoc(I, src))
 				return
 			eject_seed()
 			insert_seed(I)
 			to_chat(usr, span_notice("You add [I] to the machine."))
-		else // Інакше вивантажуємо поточне насіння
+		else // Иначе выгружаем текущие семена
 			eject_seed()
 
-	// --- Обробка вивантаження диска ---
+	// --- Обработка выгрузки диска ---
 	else if(href_list["eject_disk"] && !operation)
 		var/obj/item/I = usr.get_active_held_item()
-		if(istype(I, /obj/item/disk/plantgene)) // Якщо гравець тримає диск, вставляємо його
+		if(istype(I, /obj/item/disk/plantgene)) // Если игрок держит диск, вставляем его
 			if(!usr.transferItemToLoc(I, src))
 				return
 			eject_disk()
 			disk = I
 			to_chat(usr, span_notice("You add [I] to the machine."))
-		else // Інакше вивантажуємо поточний диск
+		else // Иначе выгружаем текущий диск
 			eject_disk()
 
-	// --- Обробка вставки гена ---
+	// --- Обработка вставки гена ---
 	else if(href_list["op"] == "insert" && disk && disk.gene && seed)
-		if(!operation) // Чекаємо підтвердження
+		if(!operation) // Ждем подтверждения
 			operation = "insert"
 		else
-			if(disk.gene.can_add(seed)) // Перевіряємо сумісність гена
-				if(istype(disk.gene, /datum/plant_gene/trait/custom_stat)) // Якщо вставляємо характеристику
+			if(disk.gene.can_add(seed)) // Проверяем совместимость гена
+				if(istype(disk.gene, /datum/plant_gene/trait/custom_stat)) // Если вставляем характеристику
 					var/datum/plant_gene/trait/custom_stat/stat_gene = disk.gene
-					core_stats[stat_gene.stat_name] = stat_gene.stat_value // Змінюємо значення характеристики в core_stats
+					core_stats[stat_gene.stat_name] = stat_gene.stat_value // Изменяем значение характеристики в core_stats
 
-					// Оновлюємо властивості насіння, якщо потрібно
+					// Обновляем свойства семян, если нужно
 					switch (stat_gene.stat_name)
 						if ("Potency")
 							seed.potency = stat_gene.stat_value
@@ -352,62 +352,62 @@
 						if ("Instability")
 							seed.instability = stat_gene.stat_value
 				else
-					seed.genes += disk.gene.Copy() // Копіюємо ген на насіння
-					seed.reagents_from_genes() // Оновлюємо список реагентів, якщо потрібно
+					seed.genes += disk.gene.Copy() // Копируем ген на семена
+					seed.reagents_from_genes() // Обновляем список реагентов, если нужно
 
-				// Дії після успішної вставки
-				update_genes() // Оновлюємо списки генів
-				repaint_seed() // Перефарбовуємо насіння
-			else // Обробка, якщо ген не може бути вставлений
+				// Действия после успешной вставки
+				update_genes() // Обновляем списки генов
+				repaint_seed() // Перекрашиваем семена
+			else // Обработка, если ген не может быть вставлен
 				to_chat(usr, span_warning("Unable to insert gene: [disk.gene.get_name()]")) // Повідомлення про помилку
 
-			operation = "" // Скидаємо операцію
-			target = null // Скидаємо цільовий ген
+			operation = "" // Сбрасываем операцию
+			target = null // Сбрасываем целевой ген
 
-	// --- Обробка вставки гена реагента ---
+	// --- Обработка вставки гена реагента ---
 	else if(href_list["insert_reagent_gene"] && disk && disk.gene && seed && istype(disk.gene, /datum/plant_gene/reagent))
-		if(!operation) // Чекаємо підтвердження
+		if(!operation) // Ждем подтверждения
 			operation = "insert_reagent_gene"
 		else
-			if(disk.gene.can_add(seed)) // Перевіряємо сумісність гена
-				seed.genes += disk.gene.Copy() // Копіюємо ген на насіння
-				seed.reagents_from_genes() // Оновлюємо список реагентів
-				update_genes() // Оновлюємо списки генів
-				repaint_seed() // Перефарбовуємо насіння
-			else // Обробка, якщо ген не може бути вставлений
+			if(disk.gene.can_add(seed)) // Проверяем совместимость гена
+				seed.genes += disk.gene.Copy() // Копируем ген на семена
+				seed.reagents_from_genes() // Обновляем список реагентов
+				update_genes() // Обновляем списки генов
+				repaint_seed() // Перекрашиваем семена
+			else // Обработка, если ген не может быть вставлен
 				to_chat(usr, span_warning("Unable to insert gene: [disk.gene.get_name()]")) // Повідомлення про помилку
 
-			operation = "" // Скидаємо операцію
-			target = null // Скидаємо цільовий ген
+			operation = "" // Сбрасываем операцию
+			target = null // Сбрасываем целевой ген
 
-	// --- Обробка видалення, витягування та заміни гена ---
+	// --- Обработка удаления, извлечения и замены гена ---
 	else if(href_list["gene"] && seed)
 		var/datum/plant_gene/G = locate(href_list["gene"]) in seed.genes
-		var/gene_index = seed.genes.Find(G) // Знаходимо індекс гена
+		var/gene_index = seed.genes.Find(G) // Находим индекс гена
 
 		if(!G || !href_list["op"] || !(href_list["op"] in list("remove", "extract", "replace")) || gene_index == 0)
 			interact(usr)
 			return
 
-		if(!operation || target != G) // Чекаємо підтвердження
+		if(!operation || target != G) // Ждем подтверждения
 			target = G
 			operation = href_list["op"]
 
 		else if(operation == href_list["op"] && target == G)
 			switch(href_list["op"])
-				if("remove") // Видалення гена
-					if(G.mutability_flags & PLANT_GENE_REMOVABLE) // Перевіряємо, чи можна видалити ген
-						seed.genes.Cut(gene_index, gene_index + 1) // Видаляємо ген за індексом
-						seed.reagents_from_genes() //  Оновлюємо  seed.reagents_add
+				if("remove") // Удаление гена
+					if(G.mutability_flags & PLANT_GENE_REMOVABLE) // Проверяем, можно ли удалить ген
+						seed.genes.Cut(gene_index, gene_index + 1) // Удаляем ген по индексу
+						seed.reagents_from_genes() // Обновляем seed.reagents_add
 					repaint_seed()
 
-				if("extract") // Витягування гена на диск
-					if(disk && !disk.read_only) // Видалено PLANT_GENE_MUTATABLE
+				if("extract") // Извлечение гена на диск
+					if(disk && !disk.read_only)
 						disk.gene = G
-						disk.gene_categories = gene_categories // Зберігаємо посилання на gene_categories в диску
-						seed.genes.Cut(gene_index, gene_index + 1) // Видаляємо ген за індексом
+						disk.gene_categories = gene_categories // Сохраняем ссылку на gene_categories в диске
+						seed.genes.Cut(gene_index, gene_index + 1) // Удаляем ген по индексу
 
-						// --- Обмеження характеристик при витягуванні ---
+						// --- Ограничение характеристик при извлечении ---
 						var/stat_name = null
 						switch(G.type)
 							if("/datum/plant_gene/trait/potency")
@@ -448,47 +448,47 @@
 							core_stats[stat_name] = clamp(stat_value, min_value, max_value)
 
 						disk.update_name()
-						seed.reagents_from_genes() // Оновлюємо список реагентів
+						seed.reagents_from_genes() // Обновляем список реагентов
 						qdel(seed)
 						seed = null
 						update_icon()
 
-				if("replace") // Заміна гена
+				if("replace") // Замена гена
 					if(disk && disk.gene && istype(disk.gene, G.type) && (G.mutability_flags & PLANT_GENE_REMOVABLE))
 						seed.genes -= G
 						seed.genes += disk.gene.Copy()
-						seed.reagents_from_genes() //  Оновлюємо  seed.reagents_add
+						seed.reagents_from_genes() // Обновляем seed.reagents_add
 						repaint_seed()
 
 			update_genes()
 			operation = ""
 			target = null
 
-	// --- Обробка витягування характеристики ---
+	// --- Обработка извлечения характеристики ---
 	else if(href_list["extract_stat"] && seed && disk && !disk.read_only)
 		var/stat_name = href_list["extract_stat"]
 		var/stat_value = core_stats[stat_name]
 
-		// Додаємо попередження про знищення насіння
+		// Добавляем предупреждение об уничтожении семян
 		var/confirm = tgui_alert(usr, "Extracting this stat will destroy the seed sample. Are you sure?", "Confirmation", list("Yes", "No"))
 		if(confirm != "Yes")
 			return
 
-		// Створення нового гена на основі stat_name та stat_value
+		// Создание нового гена на основе stat_name и stat_value
 		var/datum/plant_gene/new_gene = new /datum/plant_gene/trait/custom_stat(stat_name, stat_value)
 		disk.gene = new_gene
 		disk.update_name()
 
-		qdel(seed) // Видаляємо насіння
+		qdel(seed) // Удаляем семена
 		seed = null
-		interact(usr) // Оновлюємо інтерфейс користувача
+		interact(usr) // Обновляем интерфейс пользователя
 
-	// --- Скасування операції ---
+	// --- Отмена операции ---
 	else if(href_list["abort"])
 		operation = ""
 		target = null
 
-	interact(usr) // Оновлюємо інтерфейс користувача
+	interact(usr) // Обновляем интерфейс пользователя
 //
 /obj/machinery/plantgenes/proc/insert_seed(obj/item/seeds/S)
 	if(!istype(S) || seed)
@@ -527,7 +527,7 @@
     core_stats = list()
 
     if (seed)
-        // Отримуємо характеристики з seed
+        // Получаем характеристики из seed
         core_stats["Potency"] = seed.potency
         core_stats["Yield"] = seed.yield
         core_stats["Production"] = seed.production
@@ -537,7 +537,7 @@
         core_stats["Weed Chance"] = seed.weed_chance
         core_stats["Instability"] = seed.instability
 
-        // Розподіляємо гени по категоріям
+        // Распределяем гены по категориям
         for (var/datum/plant_gene/gene in seed.genes)
             switch (gene.type)
                 // Reagent Genes
@@ -626,9 +626,7 @@
 	seed.name = "experimental " + seed.name
 	seed.icon_state = "seed-x"
 
-// Gene modder for seed vault ship, built with high tech alien parts.
-///obj/machinery/plantgenes/seedvault
-//	circuit = /obj/item/circuitboard/machine/plantgenes/vault
+
 
 /*
  *  Plant DNA disk
@@ -664,7 +662,7 @@
 /obj/item/disk/plantgene/examine(mob/user)
 	. = ..()
 
-	// Перевіряємо, чи є ген потенції в категорії "Core Genes"
+	// Проверяем, есть ли ген потенции в категории "Core Genes"
 	var/has_potency_gene = FALSE
 	for(var/datum/plant_gene/gene in gene_categories["Core Genes"])
 		if(gene.type == "/datum/plant_gene/trait/potency")
